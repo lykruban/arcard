@@ -1,31 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Custom AR Marker with 3D Model</title>
-  <!-- Include A-Frame and AR.js -->
-  <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/jeromeetienne/ar.js/aframe/build/aframe-ar.min.js"></script>
-  <style>
-    body { margin: 0; overflow: hidden; }
-  </style>
-</head>
-<body>
-  <!-- Define the AR scene -->
-  <a-scene embedded arjs>
-    <a-sky color="#87cefa">
-      <a-animation attribute="color" dur="10000" from="#87cefa" to="#1e90ff" repeat="indefinite"></a-animation>
-    </a-sky>
 
-    <!-- Use your custom marker -->
-    <a-marker preset="custom" type="pattern" url="logo-marker.patt">
-      <!-- Replace the red cube with your 3D model -->
-      <a-entity gltf-model="Cute_Demon.glb" scale="0.5 0.5 0.5" rotation="0 0 0"></a-entity>
-    </a-marker>
-
-    <!-- Define the camera for AR -->
-    <a-entity camera></a-entity>
-  </a-scene>
-</body>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+  </head>
+  <body>
+    <a-scene mindar-image="imageTargetSrc: https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/card.mind;" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+      <a-entity mindar-image-target="targetIndex: 0">
+        <a-plane color="blue" opaciy="0.5" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
+      </a-entity>
+    </a-scene>
+  </body>
 </html>
