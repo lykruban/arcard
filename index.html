@@ -30,14 +30,13 @@
 
       <!-- MindAR Target -->
       <a-entity mindar-image-target="targetIndex: 0" id="targetEntity">
-        <!-- 3D Model -->
+        <!-- 3D Model (with 90 degrees rotation on X-axis) -->
         <a-gltf-model
           id="shoeModel"
           src="./source/Seen_low_2K.glb"
           position="0 0 0.1"
           scale="2.5 2.5 2.5"
-          rotation="90 0 0"
-          animation__rotate="property: rotation; to: 90 360 0; dur: 5000; loop: true; easing: linear"
+          rotation="90 0 0"  <!-- 90 degrees rotation on X-axis -->
         ></a-gltf-model>
       </a-entity>
 
@@ -45,32 +44,5 @@
       <a-light type="ambient" intensity="1"></a-light>
       <a-light type="directional" intensity="1" position="1 2 0"></a-light>
     </a-scene>
-
-    <script>
-      // JavaScript Logic for Dynamic Control (Rotation, Scaling, etc.)
-
-      const shoeModel = document.getElementById("shoeModel");
-
-      // Function to dynamically change rotation
-      function rotateModel() {
-        let rotation = 0;
-        setInterval(() => {
-          rotation += 1;
-          shoeModel.setAttribute("rotation", `${rotation} 0 0`);
-        }, 20);
-      }
-
-      // Function to dynamically scale the model
-      function scaleModel(factor) {
-        shoeModel.setAttribute("scale", `${factor} ${factor} ${factor}`);
-      }
-
-      // Wait for the AR target to be detected, then apply transformations
-      document.querySelector("a-scene").addEventListener("loaded", () => {
-        // Start rotation and scale actions after the scene is loaded
-        rotateModel();
-        scaleModel(2.5); // Set initial scale to 2.5 times
-      });
-    </script>
   </body>
 </html>
