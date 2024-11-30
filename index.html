@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
@@ -16,9 +16,10 @@
       }
     </style>
   </head>
+
   <body>
     <a-scene
-      mindar-image="imageTargetSrc: ./targets.mind; filterMinCF: 0.0001; filterBeta: 0.5;"
+      mindar-image="imageTargetSrc: ./targets.mind;"
       color-space="sRGB"
       renderer="colorManagement: true; physicallyCorrectLights: true"
       vr-mode-ui="enabled: false"
@@ -28,14 +29,15 @@
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
       <!-- MindAR Target -->
-      <a-entity mindar-image-target="targetIndex: 0" keep="true">
-        <!-- 3D Model (Using Seen_low_2K.glb) with animation to rotate 90 degrees on the X-axis -->
+      <a-entity mindar-image-target="targetIndex: 0" id="targetEntity">
+        <!-- 3D Model -->
         <a-gltf-model
+          id="shoeModel"
           src="./source/Seen_low_2K.glb"
-          position="0 0 0"
-          scale="2.5 2.5 2.5"  <!-- This increases the size of the model by 2.5 times -->
-          rotation="0 0 0"   <!-- Starting rotation (no rotation initially) -->
-          animation="property: rotation; to: 90 0 0; dur: 0; delay: 0"
+          position="0 0 0.1"
+          scale="2.5 2.5 2.5"
+          rotation="90 0 0"
+          animation__rotate="property: rotation; to: 90 360 0; dur: 5000; loop: true; easing: linear"
         ></a-gltf-model>
       </a-entity>
 
@@ -43,5 +45,32 @@
       <a-light type="ambient" intensity="1"></a-light>
       <a-light type="directional" intensity="1" position="1 2 0"></a-light>
     </a-scene>
+
+    <script>
+      // JavaScript Logic for Dynamic Control (Rotation, Scaling, etc.)
+
+      const shoeModel = document.getElementById("shoeModel");
+
+      // Function to dynamically change rotation
+      function rotateModel() {
+        let rotation = 0;
+        setInterval(() => {
+          rotation += 1;
+          shoeModel.setAttribute("rotation", `${rotation} 0 0`);
+        }, 20);
+      }
+
+      // Function to dynamically scale the model
+      function scaleModel(factor) {
+        shoeModel.setAttribute("scale", `${factor} ${factor} ${factor}`);
+      }
+
+      // Wait for the AR target to be detected, then apply transformations
+      document.querySelector("a-scene").addEventListener("loaded", () => {
+        // Start rotation and scale actions after the scene is loaded
+        rotateModel();
+        scaleModel(2.5); // Set initial scale to 2.5 times
+      });
+    </script>
   </body>
 </html>
