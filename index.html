@@ -29,7 +29,16 @@
 
       <!-- MindAR Target -->
       <a-entity mindar-image-target="targetIndex: 0" keep="true">
+
+                <!-- 3D Bold Text -->
+        <a-entity
+          text="value: ROCK; color: red; align: center; width: 2; font: https://cdn.aframe.io/fonts/roboto-bold.json"
+          position="0.5 0.15 0.01"
+          rotation="0 0 0"
+        ></a-entity>
+        
         <!-- Background for the text -->
+        
         <a-plane
           color="white"
           height="0.3"
@@ -38,12 +47,6 @@
           rotation="0 0 0"
         ></a-plane>
 
-        <!-- 3D Bold Text -->
-        <a-entity
-          text="value: ROCK; color: red; align: center; width: 2; font: https://cdn.aframe.io/fonts/roboto-bold.json"
-          position="0.5 0.15 0.01"
-          rotation="0 0 0"
-        ></a-entity>
       </a-entity>
 
       <!-- Lighting -->
