@@ -15,13 +15,8 @@
     >
       <!-- Asset Loading -->
       <a-assets>
-        <!-- Target Image -->
-        <img id="logo" src="./logo.jpg" />
         <!-- 3D Model -->
-        <a-asset-item
-          id="model"
-          src="./Cute_demon.glb"
-        ></a-asset-item>
+        <a-asset-item id="model" src="./Cute_Demon.glb"></a-asset-item>
       </a-assets>
 
       <!-- Camera -->
@@ -29,9 +24,6 @@
 
       <!-- MindAR Target -->
       <a-entity mindar-image-target="targetIndex: 0">
-        <!-- Display the Target Image (Optional for Visual Debugging) -->
-        <a-plane src="#logo" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
-
         <!-- 3D Model -->
         <a-gltf-model
           src="#model"
