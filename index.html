@@ -1,15 +1,45 @@
-
+<!DOCTYPE html>
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
   </head>
   <body>
-    <a-scene mindar-image="imageTargetSrc: https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.2.5/examples/image-tracking/assets/card-example/card.mind;" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+    <a-scene
+      mindar-image="imageTargetSrc: ./targets.mind;"
+      color-space="sRGB"
+      renderer="colorManagement: true; physicallyCorrectLights: true"
+      vr-mode-ui="enabled: false"
+      device-orientation-permission-ui="enabled: false"
+    >
+      <!-- Asset Loading -->
+      <a-assets>
+        <!-- Target Image -->
+        <img id="logo" src="./logo.jpg" />
+        <!-- 3D Model -->
+        <a-asset-item
+          id="model"
+          src="./Cute_demon.glb"
+        ></a-asset-item>
+      </a-assets>
+
+      <!-- Camera -->
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+      <!-- MindAR Target -->
       <a-entity mindar-image-target="targetIndex: 0">
-        <a-plane color="blue" opaciy="0.5" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
+        <!-- Display the Target Image (Optional for Visual Debugging) -->
+        <a-plane src="#logo" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
+
+        <!-- 3D Model -->
+        <a-gltf-model
+          src="#model"
+          position="0 0 0.1"
+          scale="0.5 0.5 0.5"
+          rotation="0 0 0"
+          animation="property: position; to: 0 0.2 0.1; dur: 1500; easing: easeInOutQuad; loop: true; dir: alternate"
+        ></a-gltf-model>
       </a-entity>
     </a-scene>
   </body>
