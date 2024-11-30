@@ -29,12 +29,13 @@
 
       <!-- MindAR Target -->
       <a-entity mindar-image-target="targetIndex: 0" keep="true">
-        <!-- 3D Model (Using Seen_low_2K.glb) with 90-degree rotation along the X-axis -->
+        <!-- 3D Model (Using Seen_low_2K.glb) with animation to rotate 90 degrees on the X-axis -->
         <a-gltf-model
           src="./source/Seen_low_2K.glb"
           position="0 0 0"
           scale="2.5 2.5 2.5"  <!-- This increases the size of the model by 2.5 times -->
-          rotation="90 0 0"   <!-- 90-degree rotation along the X-axis -->
+          rotation="0 0 0"   <!-- Starting rotation (no rotation initially) -->
+          animation="property: rotation; to: 90 0 0; dur: 0; delay: 0"
         ></a-gltf-model>
       </a-entity>
 
