@@ -19,7 +19,7 @@
 
   <body>
     <a-scene
-      mindar-image="imageTargetSrc: ./targets.mind; filterMinCF: 0.0001; filterBeta: 0.5;"
+      mindar-image="imageTargetSrc: ./targets2.mind; filterMinCF: 0.0001; filterBeta: 0.5;"
       color-space="sRGB"
       renderer="colorManagement: true; physicallyCorrectLights: true"
       vr-mode-ui="enabled: false"
@@ -32,7 +32,6 @@
       <a-entity mindar-image-target="targetIndex: 0" id="targetEntity">
         <!-- 3D Model with 90-degree rotation on X-axis and position set to 0 0 0 -->
         <a-gltf-model
-          id="shoeModel"
           src="./source/Seen_low_2K.glb"
           position="0 0 0"
           scale="2.5 2.5 2.5"
@@ -43,6 +42,15 @@
       <!-- Lighting -->
       <a-light type="ambient" intensity="1"></a-light>
       <a-light type="directional" intensity="1" position="1 2 0"></a-light>
+
+      <!-- Asset Loading -->
+      <a-assets>
+        <!-- 3D Model -->
+        <a-asset-item
+          id="model"
+          src="./source/Seen_low_2K.glb"
+        ></a-asset-item>
+      </a-assets>
     </a-scene>
   </body>
 </html>
