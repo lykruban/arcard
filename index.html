@@ -19,7 +19,7 @@
 
   <body>
     <a-scene
-      mindar-image="imageTargetSrc: ./targets.mind;"
+      mindar-image="imageTargetSrc: ./targets.mind; filterMinCF: 0.0001; filterBeta: 0.5;"
       color-space="sRGB"
       renderer="colorManagement: true; physicallyCorrectLights: true"
       vr-mode-ui="enabled: false"
@@ -30,12 +30,13 @@
 
       <!-- MindAR Target -->
       <a-entity mindar-image-target="targetIndex: 0" id="targetEntity">
-        <!-- 3D Model with no rotation -->
+        <!-- 3D Model with 90-degree rotation on X-axis and position set to 0 0 0 -->
         <a-gltf-model
           id="shoeModel"
           src="./source/Seen_low_2K.glb"
-          position="0 0 0.1"
+          position="0 0 0"
           scale="2.5 2.5 2.5"
+          rotation="90 0 0"
         ></a-gltf-model>
       </a-entity>
 
