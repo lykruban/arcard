@@ -25,7 +25,10 @@
       device-orientation-permission-ui="enabled: false"
     >
       <!-- Camera -->
-      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+      <a-camera position="0 0 0" look-controls="enabled: false">
+        <!-- Cursor for interactivity -->
+        <a-cursor color="yellow" fuse="false" ></a-cursor>
+      </a-camera>
 
       <!-- MindAR Target -->
       <a-entity mindar-image-target="targetIndex: 0">
@@ -34,8 +37,9 @@
           src="./instagram_3d-icon.glb"
           position="0 0 0"
           scale="1.5 1.5 1.5"
-          rotation="0 270 0"
+          rotation="90 0 0"
           id="instagramIcon"
+          class="clickable"
         ></a-gltf-model>
       </a-entity>
 
@@ -45,12 +49,12 @@
     </a-scene>
 
     <script>
-      // Add interactivity to the 3D model
+      // Add interactivity to the 3D model using A-Frame cursor
       document.addEventListener("DOMContentLoaded", () => {
         const model = document.getElementById("instagramIcon");
 
+        // When the model is clicked, open the website
         model.addEventListener("click", () => {
-          // Open the specified URL when clicked
           window.open("https://pranx.com/hacker/", "_blank");
         });
       });
