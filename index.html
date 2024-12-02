@@ -32,12 +32,12 @@
 
       <!-- MindAR Target -->
       <a-entity mindar-image-target="targetIndex: 0">
-        <!-- 3D Model: Instagram Icon -->
+        <!-- 3D Model: Instagram Icon with scale and rotation -->
         <a-gltf-model
           src="./instagram_3d-icon.glb"
           position="0 0 0"
-          scale="1.5 1.5 1.5"
-          rotation="90 0 0"
+          scale="0.3 0.3 0.3"
+          rotation="0 270 0"
           id="instagramIcon"
           class="clickable"
         ></a-gltf-model>
@@ -49,13 +49,21 @@
     </a-scene>
 
     <script>
-      // Add interactivity to the 3D model using A-Frame cursor
-      document.addEventListener("DOMContentLoaded", () => {
+      // Wait for the DOM to load, then add interactivity
+      document.addEventListener("DOMContentLoaded", function () {
         const model = document.getElementById("instagramIcon");
 
-        // When the model is clicked, open the website
-        model.addEventListener("click", () => {
+        // Ensure the model is clickable by adding the event listener
+        model.addEventListener("click", function () {
           window.open("https://pranx.com/hacker/", "_blank");
+        });
+
+        // Optional: Add mouse and touch event listeners for better interaction
+        model.addEventListener("mouseenter", function () {
+          model.setAttribute('scale', '0.35 0.35 0.35'); // Scale up when hovered
+        });
+        model.addEventListener("mouseleave", function () {
+          model.setAttribute('scale', '0.3 0.3 0.3'); // Scale back to normal
         });
       });
     </script>
