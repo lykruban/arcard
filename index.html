@@ -18,7 +18,7 @@
   </head>
   <body>
     <a-scene
-      mindar-image="imageTargetSrc: ./bctargets.mind;"
+      mindar-image="imageTargetSrc: ./targets.mind;"
       color-space="sRGB"
       renderer="colorManagement: true; physicallyCorrectLights: true"
       vr-mode-ui="enabled: false"
@@ -33,9 +33,9 @@
         <a-gltf-model
           src="./instagram_3d-icon.glb"
           position="0 0 0"
-          scale="0.3 0.3 0.3"
+          scale="1.5 1.5 1.5"
           rotation="0 270 0"
-          class="interactive"
+          id="instagramIcon"
         ></a-gltf-model>
       </a-entity>
 
@@ -47,11 +47,11 @@
     <script>
       // Add interactivity to the 3D model
       document.addEventListener("DOMContentLoaded", () => {
-        const model = document.querySelector(".interactive");
+        const model = document.getElementById("instagramIcon");
 
         model.addEventListener("click", () => {
-          // Open the Instagram profile when clicked
-          window.open("https://pranx.com/hacker/");
+          // Open the specified URL when clicked
+          window.open("https://pranx.com/hacker/", "_blank");
         });
       });
     </script>
