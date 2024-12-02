@@ -18,7 +18,7 @@
   </head>
   <body>
     <a-scene
-      mindar-image="imageTargetSrc: ./targets.mind; filterMinCF: 0.0001; filterBeta: 0.5;"
+      mindar-image="imageTargetSrc: ./bctargets.mind;"
       color-space="sRGB"
       renderer="colorManagement: true; physicallyCorrectLights: true"
       vr-mode-ui="enabled: false"
@@ -27,45 +27,21 @@
       <!-- Camera -->
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-      <!-- Displaying text for the first target (targets.mind) -->
+      <!-- MindAR Target -->
       <a-entity mindar-image-target="targetIndex: 0">
-        <!-- Background for the text -->
-        <a-plane
-          color="white"
-          height="0.5"
-          width="3"
-          position="0 0.5 0"
-        ></a-plane>
-
-        <!-- 3D Text using default font -->
-        <a-text
-          value="Bakchodi Mat Kar Launde"
-          color="red"
-          align="center"
-          width="4"
-          position="0 0.52 0.01"
-          scale="1 1 1"
-        ></a-text>
-      </a-entity>
-
-    </a-scene>
-
-    <a-scene
-      mindar-image="imageTargetSrc: ./targets2.mind; filterMinCF: 0.0001; filterBeta: 0.5;"
-      color-space="sRGB"
-      renderer="colorManagement: true; physicallyCorrectLights: true"
-      vr-mode-ui="enabled: false"
-      device-orientation-permission-ui="enabled: false"
-    >
-      <!-- Camera -->
-      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
-
-      <!-- Displaying GLB model for the second target (targets2.mind) -->
-      <a-entity mindar-image-target="targetIndex: 0">
+        <!-- 3D Model: free_london_kinnaird_house -->
         <a-gltf-model
-          src="./source/Seen_low_2K.glb"
-          position="0 0 0"
-          scale="2.5 2.5 2.5"
+          src="./free_london_kinnaird_house.glb"
+          position="0 0.3 0"
+          scale="1.5 1.5 1.5"
+          rotation="90 0 0"
+        ></a-gltf-model>
+
+        <!-- 3D Model: instagram_3d-icon -->
+        <a-gltf-model
+          src="./instagram_3d-icon.glb"
+          position="0 -0.5 0"
+          scale="1.5 1.5 1.5"
           rotation="90 0 0"
         ></a-gltf-model>
       </a-entity>
@@ -73,8 +49,6 @@
       <!-- Lighting -->
       <a-light type="ambient" intensity="1"></a-light>
       <a-light type="directional" intensity="1" position="1 2 0"></a-light>
-
     </a-scene>
-
   </body>
 </html>
